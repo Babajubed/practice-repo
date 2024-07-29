@@ -63,23 +63,6 @@ pipeline {
                 }
             }
         }
-        stage('dockerCert') {
-            steps {
-                script {
-                    withCredentials([
-                        dockerCert(
-                            credentialsId: 'docker-cert',
-                            variable: 'DOCKER_CERT_PATH')
-                    ]) {
-                        echo 'DOCKER_CERT_PATH=' + env.DOCKER_CERT_PATH
-                        echo 'DOCKER_CERT_PATH/ca.pem=' + readFile("${env.DOCKER_CERT_PATH}/ca.pem")
-                        echo 'DOCKER_CERT_PATH/cert.pem=' + readFile("${env.DOCKER_CERT_PATH}/cert.pem")
-                        echo 'DOCKER_CERT_PATH/key.pem=' + readFile("${env.DOCKER_CERT_PATH}/key.pem")
-                        // Avoid printing sensitive data directly in real scenarios
-                    }
-                }
-            }
-        }
         stage('list credentials ids') {
             steps {
                 script {
