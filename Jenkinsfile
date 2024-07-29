@@ -35,7 +35,7 @@ pipeline {
                 script {
                     withCredentials([
                         string(
-                            credentialsId: 'github-token',
+                            credentialsId: 'secret-text-id',
                             variable: 'GITHUB_TOKEN')
                     ]) {
                         echo 'GITHUB_TOKEN=' + env.GITHUB_TOKEN
